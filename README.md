@@ -1,6 +1,6 @@
 # nf - New File
 
-Creates a new file with a template based on file extension.
+Creates a new file with a template based on the file extension or template switch.
 
 installation:
 
@@ -18,5 +18,21 @@ sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/nf \
 
 usage:
 ```
-nf <filename>
+usage: nf [-h] [-d] [-v] [-x] [-t TEMPLATE] filename
+
+options:
+  -h, --help            show this help message and exit
+  -d, --dir             Create directory structure if needed
+  -v, --version         Show version and exit
+  -x                    Give execute permission (chmod +x)
+  -t TEMPLATE, --template TEMPLATE
+                        use this template
+
+Examples:
+
+  # Creates a new file called test.sh
+  # with a shebang #!/bin/bash
+
+  nf test.sh
+
 ```
