@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 
-__VERSION__ = 0.05
+__VERSION__ = 0.060000000000000005
 user_help = f'''
 Generates a new file with a shebang based on file extention.
 
