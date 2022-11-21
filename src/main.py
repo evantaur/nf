@@ -69,8 +69,15 @@ filename = args.filename
 
 
 
-#check if file exsists and quit if it does.
-if Path(filename).exists():
+def check_empty(filename):
+    ''' Check if file exsists or is not empty '''
+    if not Path(filename).exists():
+        return False
+    if os.path.getsize(filename) > 0:
+        return True
+    return False
+
+if check_empty(filename):
     sys.exit("File not empty")
 
 f_ext = Path(filename).suffix.strip('.') if not args.template else args.template
@@ -79,7 +86,6 @@ try:
     with open(filename, 'w', encoding='utf-8') as file:
         # Writing data to a file
         file.writelines(sb)
-        print(f"Wrote a new file to {filename}")
         if args.x:
             chmod = os.system(f"chmod +x {filename}")
 
