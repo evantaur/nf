@@ -46,8 +46,8 @@ def write():
     '''Write to file'''
     with open('nf', 'w', encoding='utf-8') as file:
         file.writelines(data)
-        print("Updating version")
-    with open('version', 'w', encoding='utf-8') as file:
-        file.writelines(str(version))
+#        print("Updating version")
+#    with open('version', 'w', encoding='utf-8') as file:
+#        file.writelines(str(version))
         print("Build finished")
 write()
