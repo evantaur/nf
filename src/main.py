@@ -57,9 +57,6 @@ args = parser.parse_args()
 filename = args.filename
 
 
-#sys.exit(filename) #My god i'll have me shot if i push this thing with this fucking thing in it'
-
-
 #/!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
 #!!! Do NOT modify manually, use build!!!
 #!TEMPLATES
