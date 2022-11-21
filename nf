@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 
-__VERSION__ = 0.04
+__VERSION__ = 0.05
 
 '''
 ARGPARSE
