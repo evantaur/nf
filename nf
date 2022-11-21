@@ -4,7 +4,9 @@ import os
 import argparse
 from pathlib import Path
 
+
 __VERSION__ = 0.04
+
 '''
 ARGPARSE
 '''
@@ -22,6 +24,32 @@ Examples:
 '''
     )
 
+def upgrade():
+    filepath = os.path.realpath(__file__)
+    if not os.access(filepath, os.W_OK):
+        sys.exit("Permission denied!")
+    try:
+        r.urlretrieve('https://raw.githubusercontent.com/evantaur/nf/main/nf', filepath)
+        sys.exit("Upgrade complete")
+    except PermissionError:
+        sys.exit("Permission denied!")
+
+try:
+    import urllib.request as r
+    filepath = os.path.realpath(__file__)
+    if os.access(filepath, os.W_OK):
+       parser.add_argument(
+            '--upgrade',
+            help='Upgrade script',
+            action="store_true"
+        )
+
+except ModuleNotFoundError:
+    pass
+
+if "--upgrade" in sys.argv:
+    upgrade()
+    sys.exit("upgrading")
 
 parser.add_argument(
     '-d', '--dir',
@@ -98,8 +126,6 @@ templates = {
   ]
 }#!!! Do NOT modify manually, use build!!!
 #\!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/
-
-
 
 
 
