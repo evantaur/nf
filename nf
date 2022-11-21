@@ -2,7 +2,7 @@
 import sys
 from pathlib import Path
 
-__VERSION__ = 0.02
+__VERSION__ = 0.03
 user_help = f'''
 Generates a new file with a shebang based on file extention.
 
@@ -28,6 +28,14 @@ templates = {
   ],
   "sh": [
     "#!/bin/bash\n"
+  ],
+  "rs": [
+    "//\n",
+    "//\n",
+    "//\n",
+    "fn main() {\n",
+    "\n",
+    "}\n"
   ],
   "json": [
     "{}\n"
