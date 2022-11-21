@@ -25,7 +25,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Github"
-          git add nf
+          git add nf version -f
           git diff-index --quiet HEAD || (git commit -a -m "built nf" --allow-empty)
 
       - name: push
