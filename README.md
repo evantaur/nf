@@ -1,6 +1,6 @@
 # nf - New File
 
-Creates a new file with a template based to file extention.
+Creates a new file with a template based on file extension.
 
 installation:
 
