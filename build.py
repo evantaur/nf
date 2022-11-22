@@ -28,7 +28,7 @@ with open('./src/main.py','r',encoding='utf-8') as file:
 
 print("Reading version number")
 with open('version','r',encoding='utf-8') as file:
-    version = float(file.readlines()[0].strip())+0.01
+    version = float(file.readlines()[0].strip())
 
 
 '''Find indexes to replace'''

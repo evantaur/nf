@@ -25,7 +25,10 @@ sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/nf \
 
 usage:
 ```
-usage: nf [-h] [-d] [-v] [-x] [-t TEMPLATE] filename
+usage: nf [-h] [-d] [-v] [-x] [-t TEMPLATE] [-l] filename
+
+positional arguments:
+  filename              filename
 
 options:
   -h, --help            show this help message and exit
@@ -34,6 +37,7 @@ options:
   -x                    Give execute permission (chmod +x)
   -t TEMPLATE, --template TEMPLATE
                         use this template
+  -l, --list            list templates
 
 Examples:
 
@@ -41,5 +45,6 @@ Examples:
   # with a shebang #!/bin/bash
 
   nf test.sh
+
 
 ```
