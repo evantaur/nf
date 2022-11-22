@@ -9,6 +9,28 @@ __VERSION__=""
 
 
 '''
+Making config path if needed and reading user templates.
+'''
+home_dir = os.path.expanduser( '~' )
+config_dir=f"{home_dir}/.config/nf"
+
+
+user_templates=[]
+user_template_dir=f"{config_dir}/templates"
+Path(user_template_dir).mkdir( 0o760, True, True )
+temp = os.listdir(user_template_dir)
+for i in temp:
+    user_templates.append(i)
+
+
+#/!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
+#!!! Do NOT modify manually, use build!!!
+#!TEMPLATES
+#!!! Do NOT modify manually, use build!!!
+#\!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/
+
+
+'''
 ARGPARSE
 '''
 parser = argparse.ArgumentParser(
@@ -20,7 +42,7 @@ Examples:
   # Creates a new file called test.sh
   # with a shebang #!/bin/bash
 
-  {sys.argv[0]} test.sh
+  %(prog)s test.sh
 
 '''
     )
@@ -48,9 +70,21 @@ try:
 except ModuleNotFoundError:
     pass
 
+if "--list" in sys.argv:
+    print("User templates:")
+    for i in user_templates:
+        print(f"  - {i}")
+    print("System templates:")
+    for i in templates:
+        print(f"  - {i}")
+    sys.exit(0)
+
+
 if "--upgrade" in sys.argv:
+    print("Upgrading")
     upgrade()
-    sys.exit("upgrading")
+    print("Upgrade finished")
+    sys.exit(0)
 
 parser.add_argument(
     '-d', '--dir',
@@ -73,10 +107,24 @@ parser.add_argument(
     action="store_true"
     )
 
-parser.add_argument('-t','--template',default=None, help='use this template')
+parser.add_argument(
+    '-t','--template',
+    default=None,
+    help='use this template'
+    )
 
 
-parser.add_argument('filename', help='filename')
+parser.add_argument(
+    '-l','--list',
+    action="store_true",
+    help='list templates'
+    )
+
+
+parser.add_argument(
+    'filename',
+    help='filename'
+    )
 
 
 args = parser.parse_args()
@@ -85,15 +133,25 @@ args = parser.parse_args()
 filename = args.filename
 
 
-#/!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\
-#!!! Do NOT modify manually, use build!!!
-#!TEMPLATES
-#!!! Do NOT modify manually, use build!!!
-#\!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!/
+def list_tempaltes():
+    ''' list templates'''
+    print("templates")
+    sys.exit(0)
 
-
-
-
+def get_template(template):
+    '''
+    Check if template exsists in user templates,
+    if not attempt to use built in template
+    '''
+    if template in user_templates:
+        with open(f"{user_template_dir}/{template}",'r',encoding='utf-8') as file:
+            return file.readlines()
+    elif template in templates:
+        return templates[template]
+    else:
+        if args.template:
+            sys.exit("Template not found!")
+        return [""]
 
 def check_empty(filename):
     ''' Check if file exsists or is not empty '''
@@ -107,13 +165,19 @@ if check_empty(filename):
     sys.exit("File not empty")
 
 f_ext = Path(filename).suffix.strip('.') if not args.template else args.template
-sb = [""] if f_ext not in templates else templates[f_ext]
+content = get_template(f_ext)
 try:
+    if args.dir:
+        ''' create directory if needed'''
+        dirname=os.path.dirname(filename)
+        Path(dirname).mkdir(0o760, True, True )
     with open(filename, 'w', encoding='utf-8') as file:
         # Writing data to a file
-        file.writelines(sb)
+        file.writelines(content)
         if args.x:
             chmod = os.system(f"chmod +x {filename}")
 
 except FileNotFoundError:
 	print("No such directory.")
+except PermissionError:
+	print("Permission denied")
