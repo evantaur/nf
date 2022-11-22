@@ -5,7 +5,7 @@ import argparse
 from pathlib import Path
 
 
-__VERSION__ = 0.05
+__VERSION__ = 0.06
 
 '''
 Making config path if needed and reading user templates.
