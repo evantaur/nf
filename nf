@@ -82,6 +82,8 @@ Examples:
 
 '''
     )
+def any_in(a,b):
+    return len([x for x in a if x in b])>0
 
 def upgrade():
     filepath = os.path.realpath(__file__)
@@ -106,7 +108,7 @@ try:
 except ModuleNotFoundError:
     pass
 
-if "--list" in sys.argv:
+if any_in(["--list","-l"],sys.argv):
     print("User templates:")
     for i in user_templates:
         print(f"  - {i}")
