@@ -7,7 +7,7 @@ Creates a new file with a template based on the file extension or template switc
 positional arguments:
   filename              filename
 
-options:
+optional arguments:
   -h, --help            show this help message and exit
   --upgrade             Upgrade script
   -d, --dir             Create directory structure if needed

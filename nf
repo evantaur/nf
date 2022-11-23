@@ -27,17 +27,22 @@ for i in temp:
 Automatically generated templates.
 '''
 templates = {
-  "c": [
-    "// \n",
+  "py": [
+    "#!/usr/bin/env python3\n"
+  ],
+  "sh": [
+    "#!/bin/bash\n"
+  ],
+  "rs": [
     "//\n",
     "//\n",
-    "\n",
-    "#include <stdio.h>\n",
-    "  \n",
-    "int main()\n",
-    "{\n",
+    "//\n",
+    "fn main() {\n",
     "\n",
     "}\n"
+  ],
+  "json": [
+    "{}\n"
   ],
   "php": [
     "<?php\n",
@@ -47,20 +52,15 @@ templates = {
   "pl": [
     "#!/usr/bin/perl\n"
   ],
-  "py": [
-    "#!/usr/bin/env python3\n"
-  ],
-  "sh": [
-    "#!/bin/bash\n"
-  ],
-  "json": [
-    "{}\n"
-  ],
-  "rs": [
+  "c": [
+    "// \n",
     "//\n",
     "//\n",
-    "//\n",
-    "fn main() {\n",
+    "\n",
+    "#include <stdio.h>\n",
+    "  \n",
+    "int main()\n",
+    "{\n",
     "\n",
     "}\n"
   ]
