@@ -117,6 +117,20 @@ parser.add_argument(
 
 
 parser.add_argument(
+    '-a','--add',
+    action="store_true",
+    help='add file as custom template.'
+    )
+
+
+parser.add_argument(
+    '-r','--remove',
+    action="store_true",
+    help='remove custom temlate'
+    )
+
+
+parser.add_argument(
     '-l','--list',
     action="store_true",
     help='list templates'
@@ -163,23 +177,44 @@ def check_empty(filename):
         return True
     return False
 
-if check_empty(filename):
-    sys.exit("File not empty")
 
-f_ext = Path(filename).suffix.strip('.') if not args.template else args.template
-content = get_template(f_ext)
-try:
-    if args.dir:
-        ''' create directory if needed'''
-        dirname=os.path.dirname(filename)
-        Path(dirname).mkdir(0o760, True, True )
-    with open(filename, 'w', encoding='utf-8') as file:
-        # Writing data to a file
-        file.writelines(content)
-        if args.x:
-            chmod = os.system(f"chmod +x {filename}")
+if args.add:
+    exists = Path(filename).exists()
+    if exists:
+        templatename = input("Enter name for template:\n")
+        with open(filename,'r',encoding='utf-8') as file:
+            text = file.readlines()
+            with open(f"{user_template_dir}/{templatename}",'w',encoding='utf-8') as f:
+                f.writelines(text)
+        sys.exit(0)
+    sys.exit("File not found.")
+elif args.remove:
+    templatename = f"{user_template_dir}/{filename}"
+    exists = Path(templatename).exists()
+    if exists:
+        os.remove(templatename)
+        print(f"Template {filename} removed.")
+        sys.exit(0)
+    sys.exit(f"No template named {filename}")
 
-except FileNotFoundError:
-	print("No such directory.")
-except PermissionError:
-	print("Permission denied")
+else:
+    if check_empty(filename):
+        sys.exit("File not empty")
+
+    f_ext = Path(filename).suffix.strip('.') if not args.template else args.template
+    content = get_template(f_ext)
+    try:
+        if args.dir:
+            ''' create directory if needed'''
+            dirname=os.path.dirname(filename)
+            Path(dirname).mkdir(0o760, True, True )
+        with open(filename, 'w', encoding='utf-8') as file:
+            # Writing data to a file
+            file.writelines(content)
+            if args.x:
+                chmod = os.system(f"chmod +x {filename}")
+
+    except FileNotFoundError:
+    	print("No such directory.")
+    except PermissionError:
+    	print("Permission denied")
