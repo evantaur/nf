@@ -34,7 +34,11 @@ Creates a new file with a template based on the file extension or template switc
 positional arguments:
   filename              filename
 
+<<<<<<< HEAD
 optional arguments:
+=======
+options:
+>>>>>>> db173bc (updated readme/build script)
   -h, --help            show this help message and exit
   --upgrade             Upgrade script
   -d, --dir             Create directory structure if needed
@@ -53,4 +57,8 @@ Examples:
 
   nf test.sh
 
+<<<<<<< HEAD
 </pre>
+=======
+</pre>
+>>>>>>> db173bc (updated readme/build script)

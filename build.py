@@ -43,16 +43,18 @@ data[TemplateIndex] = f"'''\nAutomatically generated templates.\n'''\ntemplates 
 
 
 def get_manual():
+    with open('docs/readme','r',encoding='utf-8') as file:
+        readme = file.read()
     nf_help = subprocess.Popen(['python3', 'nf',"--help"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     stdout,stderr = nf_help.communicate()
-    return f"<pre>\n{stdout.decode()}\n</pre>"
+    return f"{readme}<pre>\n{stdout.decode()}\n</pre>"
 
 
 def write():
     '''Write to file'''
     with open('nf', 'w', encoding='utf-8') as file:
         file.writelines(data)
-    with open('USAGE.md', 'w', encoding='utf-8') as file:
+    with open('README.md', 'w', encoding='utf-8') as file:
         file.writelines(get_manual())
 
 #        print("Updating version")
