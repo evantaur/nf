@@ -26,7 +26,8 @@ sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/nf \
 usage:
 
 <pre>
-usage: nf [-h] [--upgrade] [-d] [-v] [-x] [-t TEMPLATE] [-a] [-r] [-l]
+usage: nf [-h] [--upgrade] [-d] [-v] [-x] [-t TEMPLATE] [-a] [-r] [-l] [-e]
+          [--change-editor]
           filename
 
 Creates a new file with a template based on the file extension or template switch
@@ -45,6 +46,12 @@ optional arguments:
   -a, --add             add file as custom template.
   -r, --remove          remove custom temlate
   -l, --list            list templates
+
+Editor:
+  Use these if you want to open the file after it has been edited
+
+  -e, --edit            open in editor
+  --change-editor       change editor
 
 Examples:
 

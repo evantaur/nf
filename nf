@@ -2,10 +2,11 @@
 import sys
 import os
 import argparse
+import json
 from pathlib import Path
 
 
-__VERSION__ = 0.07
+__VERSION__ = 0.08
 
 
 '''
@@ -27,6 +28,29 @@ for i in temp:
 Automatically generated templates.
 '''
 templates = {
+  "c": [
+    "// \n",
+    "//\n",
+    "//\n",
+    "\n",
+    "#include <stdio.h>\n",
+    "  \n",
+    "int main()\n",
+    "{\n",
+    "\n",
+    "}\n"
+  ],
+  "php": [
+    "<?php\n",
+    "\n",
+    "?>\n"
+  ],
+  "json": [
+    "{}\n"
+  ],
+  "pl": [
+    "#!/usr/bin/perl\n"
+  ],
   "py": [
     "#!/usr/bin/env python3\n"
   ],
@@ -40,31 +64,26 @@ templates = {
     "fn main() {\n",
     "\n",
     "}\n"
-  ],
-  "json": [
-    "{}\n"
-  ],
-  "php": [
-    "<?php\n",
-    "\n",
-    "?>\n"
-  ],
-  "pl": [
-    "#!/usr/bin/perl\n"
-  ],
-  "c": [
-    "// \n",
-    "//\n",
-    "//\n",
-    "\n",
-    "#include <stdio.h>\n",
-    "  \n",
-    "int main()\n",
-    "{\n",
-    "\n",
-    "}\n"
   ]
 }
+
+
+'''
+Load config
+'''
+if Path(f"{config_dir}/config.json").exists():
+    with open(f"{config_dir}/config.json",'r',encoding='utf-8') as cfg:
+        conf = json.load(cfg)
+else:
+    conf = {}
+
+
+def save_config():
+    if len(conf.keys()) > 0:
+        with open(f"{config_dir}/config.json",'w',encoding='utf-8') as cfg:
+            json.dump(conf, cfg)
+    else:
+        os.remove(f"{config_dir}/config.json")
 
 
 '''
@@ -125,6 +144,7 @@ if "--upgrade" in sys.argv:
     print("Upgrade finished")
     sys.exit(0)
 
+
 parser.add_argument(
     '-d', '--dir',
     help='Create directory structure if needed',
@@ -174,10 +194,75 @@ parser.add_argument(
     )
 
 
+editor = parser.add_argument_group(
+    'Editor',
+    description="Use these if you want to open the file after it has been edited"
+    )
+
+
+editor.add_argument(
+    '-e','--edit',
+    help='open in editor',
+    action='store_true'
+    )
+
+
+editor.add_argument(
+    '--change-editor',
+    help='change editor',
+    action='store_true'
+    )
+
+
 parser.add_argument(
     'filename',
     help='filename'
     )
+
+
+def list_editors():
+    """check availiable editors."""
+    import shutil
+    #This line will get replaced by src/editors
+    editors = [
+        "nano",
+        "vi",
+        "emacs",
+        "gedit",
+        "kwrite",
+        "kate"
+]
+    ret = ["default"]
+    for key in editors:
+        if shutil.which(key):
+            ret.append(key)
+    return ret
+
+
+if "--change-editor" in sys.argv:
+    editors=list_editors()
+    current = [0,conf["editor"]] if "editor" in conf else [0,"default"]
+    print("Please select editor:\n")
+    for i,editor in enumerate(editors):
+        if editor == current[1]:
+            current[0] = i
+        printformat = editor if editor != current[1] else f"\033[93m*{editor}*\033[0m"
+        print(f"  [{i}] {printformat} ")
+    try:
+        s = input(f"\n\nSelect [default={current[1]}]:\n")
+        s = int(s) if s else -1
+        if(s == -1 or s >= len(editors)):
+            sys.exit(0)
+        if s >= 0:
+            if "editor" in conf and s == 0:
+                print("remove")
+                conf.pop("editor")
+            else:
+                conf["editor"] = editors[s]
+            save_config()
+    except KeyboardInterrupt:
+        pass
+    sys.exit(0)
 
 
 args = parser.parse_args()
@@ -255,3 +340,10 @@ else:
     	print("No such directory.")
     except PermissionError:
     	print("Permission denied")
+
+#sys.exit(args)
+if args.edit:
+    if "editor" in conf:
+        os.system(f"{conf['editor']} {filename}")
+    else:
+        os.system(f"/usr/bin/editor {filename} &> /dev/null &")
