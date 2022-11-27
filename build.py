@@ -28,12 +28,12 @@ with open('./src/main.py','r',encoding='utf-8') as file:
     data = file.readlines()
 
 print("Reading editors")
-with open('./src/editors','r',encoding='utf-8') as file:
+with open('./src/editors.json','r',encoding='utf-8') as file:
     editors = json.load(file)
     editors.sort()
     
 print("Sorting editors")
-with open('./src/editors','w',encoding='utf-8') as file:
+with open('./src/editors.json','w',encoding='utf-8') as file:
     json.dump(editors, file, indent=2)
 
 print("Reading version number")
