@@ -196,7 +196,7 @@ parser.add_argument(
 
 editor = parser.add_argument_group(
     'Editor',
-    description="Use these if you want to open the file after it has been edited"
+    description="Use these if you want to open the file after it has been created"
     )
 
 
