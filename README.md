@@ -44,7 +44,7 @@ optional arguments:
   -t TEMPLATE, --template TEMPLATE
                         use this template
   -a, --add             add file as custom template.
-  -r, --remove          remove custom temlate
+  -r, --remove          remove custom template
   -l, --list            list templates
 
 Editor:

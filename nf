@@ -183,7 +183,7 @@ parser.add_argument(
 parser.add_argument(
     '-r','--remove',
     action="store_true",
-    help='remove custom temlate'
+    help='remove custom template'
     )
 
 
