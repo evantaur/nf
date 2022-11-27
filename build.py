@@ -30,6 +30,11 @@ with open('./src/main.py','r',encoding='utf-8') as file:
 print("Reading editors")
 with open('./src/editors','r',encoding='utf-8') as file:
     editors = json.load(file)
+    editors.sort()
+    
+print("Sorting editors")
+with open('./src/editors','w',encoding='utf-8') as file:
+    json.dump(editors, file, indent=2)
 
 print("Reading version number")
 with open('version','r',encoding='utf-8') as file:
