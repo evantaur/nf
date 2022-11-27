@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 
-__VERSION__ = 0.08
+__VERSION__ = 0.09
 
 
 '''
@@ -225,12 +225,35 @@ def list_editors():
     import shutil
     #This line will get replaced by src/editors
     editors = [
+        "atom",
+        "bluefish",
+        "brackets",
         "emacs",
+        "geany",
         "gedit",
+        "gvim",
+        "helix",
+        "jed",
+        "kakoune",
         "kate",
         "kwrite",
+        "leafpad",
+        "lime",
+        "mcedit",
+        "medit",
+        "micro",
         "nano",
-        "vi"
+        "ne",
+        "neovim",
+        "notepad",
+        "notepad++",
+        "notepadqq",
+        "nvim",
+        "pico",
+        "subl",
+        "tilde",
+        "vi",
+        "vim"
 ]
     ret = ["default"]
     for key in editors:
