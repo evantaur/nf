@@ -225,12 +225,12 @@ def list_editors():
     import shutil
     #This line will get replaced by src/editors
     editors = [
-        "nano",
-        "vi",
         "emacs",
         "gedit",
+        "kate",
         "kwrite",
-        "kate"
+        "nano",
+        "vi"
 ]
     ret = ["default"]
     for key in editors:

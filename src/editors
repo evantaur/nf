@@ -1,8 +1,8 @@
 [
-        "nano",
-        "vi",
-        "emacs",
-        "gedit",
-        "kwrite",
-        "kate"
+  "emacs",
+  "gedit",
+  "kate",
+  "kwrite",
+  "nano",
+  "vi"
 ]
