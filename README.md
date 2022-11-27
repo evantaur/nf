@@ -26,8 +26,12 @@ sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/nf \
 usage:
 
 <pre>
+<<<<<<< HEAD
 usage: nf [-h] [--upgrade] [-d] [-v] [-x] [-t TEMPLATE] [-a] [-r] [-l] [-e]
           [--change-editor]
+=======
+usage: nf [-h] [--upgrade] [-d] [-v] [-x] [-t TEMPLATE] [-a] [-r] [-l]
+>>>>>>> db173bc (updated readme/build script)
           filename
 
 Creates a new file with a template based on the file extension or template switch
@@ -35,7 +39,11 @@ Creates a new file with a template based on the file extension or template switc
 positional arguments:
   filename              filename
 
+<<<<<<< HEAD
 optional arguments:
+=======
+options:
+>>>>>>> db173bc (updated readme/build script)
   -h, --help            show this help message and exit
   --upgrade             Upgrade script
   -d, --dir             Create directory structure if needed
@@ -47,12 +55,15 @@ optional arguments:
   -r, --remove          remove custom temlate
   -l, --list            list templates
 
+<<<<<<< HEAD
 Editor:
   Use these if you want to open the file after it has been edited
 
   -e, --edit            open in editor
   --change-editor       change editor
 
+=======
+>>>>>>> db173bc (updated readme/build script)
 Examples:
 
   # Creates a new file called test.sh
