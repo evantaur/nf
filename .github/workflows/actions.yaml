@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   build:
@@ -20,6 +20,14 @@ jobs:
 
       - name: execute build
         run: python build.py
+        
+      - name: PyInstaller Windows
+  # You may pin to the exact commit or the version.
+  # uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        with:
+          path: src
+          spec: nf.spec
 
       - name: commit
         run: |
