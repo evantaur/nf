@@ -7,6 +7,8 @@ Creates a new file with a template based on the file extension or template switc
 <details>
 <summary>installation:</summary>
 <br/>
+<details>
+<summary>Linux</summary>
 user only
 
 ```
@@ -20,6 +22,17 @@ global
 sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/nf \
 > /usr/local/bin/nf && chmod +x /usr/local/bin/nf'
 ```
+</details>
+
+<details>
+<summary>Windows</summary>
+
+```
+TBA
+```
+</details>
+
+
 </details>
 
 

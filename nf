@@ -367,6 +367,7 @@ else:
 #sys.exit(args)
 if args.edit:
     if "editor" in conf:
-        os.system(f"{conf['editor']} {filename}")
+        os.system(f"{conf['editor']} \"{filename}\"")
     else:
-        os.system(f"/usr/bin/editor {filename} &> /dev/null &")
+        editor="/usr/bin/editor" if sys.platform != "windows" else "notepad"
+        os.system(f"{editor} \"{filename}\"")
