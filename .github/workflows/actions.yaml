@@ -32,7 +32,7 @@ jobs:
       - name: PyInstaller (Linux)
   # You may pin to the exact commit or the version.
   # uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
-        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        uses: JackMcKew/pyinstaller-action-linux@0.1.4
         with:
           path: .
           spec: nf.spec
@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Github"
-          git add -f nf dist/windows/nf.exe dist/linux/nf.exe
+          git add -f nf dist/windows/nf.exe dist/linux/nf
           git diff-index --quiet HEAD || (git commit -a -m "Built nf `cat version`" --allow-empty)
 
       - name: push
