@@ -73,7 +73,7 @@ def upgrade():
     if not os.access(filepath, os.W_OK):
         sys.exit("Permission denied!")
     try:
-        r.urlretrieve('https://raw.githubusercontent.com/evantaur/nf/main/nf', filepath)
+        r.urlretrieve('https://raw.githubusercontent.com/evantaur/nf/main/dist/nf', filepath)
         sys.exit("Upgrade complete")
     except PermissionError:
         sys.exit("Permission denied!")
