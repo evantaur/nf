@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['nf'],
+    ['dist/'],
     pathex=[],
     binaries=[],
     datas=[],
