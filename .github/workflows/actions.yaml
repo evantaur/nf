@@ -26,7 +26,7 @@ jobs:
   # uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
-          path: src
+          path: ./nf
           spec: nf.spec
 
       - name: commit
@@ -34,10 +34,10 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Github"
           git add nf version -f
-          git diff-index --quiet HEAD || (git commit -a -m "built nf" --allow-empty)
+          git diff-index --quiet HEAD || (git commit -a -m "Built nf `cat version`" --allow-empty)
 
       - name: push
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          branch: main
+          branch: dev
