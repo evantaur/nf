@@ -19,7 +19,7 @@ chmod +x ~/.local/bin/nf
 
 global
 ```
-sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/dist/main/nf \
+sudo sh -c 'curl -L https://raw.githubusercontent.com/evantaur/nf/main/dist/nf \
 > /usr/local/bin/nf && chmod +x /usr/local/bin/nf'
 ```
 </details>

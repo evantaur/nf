@@ -57,7 +57,7 @@ data[editorsIndex] = f"    editors = {json.dumps(editors,indent=8)}\n"
 def get_manual():
     with open('docs/readme','r',encoding='utf-8') as file:
         readme = file.read()
-    nf_help = subprocess.Popen(['python3', 'nf',"--help"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    nf_help = subprocess.Popen(['python3', 'dist/nf',"--help"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     stdout,stderr = nf_help.communicate()
     return f"{readme}<pre>\n{stdout.decode()}\n</pre>"
 
