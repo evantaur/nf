@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 
-__VERSION__ = 0.09
+__VERSION__ = 0.1
 
 
 '''
