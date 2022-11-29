@@ -64,7 +64,7 @@ def get_manual():
 
 def write():
     '''Write to file'''
-    with open('nf', 'w', encoding='utf-8') as file:
+    with open('dist/nf', 'w', encoding='utf-8') as file:
         file.writelines(data)
     with open('README.md', 'w', encoding='utf-8') as file:
         file.writelines(get_manual())
