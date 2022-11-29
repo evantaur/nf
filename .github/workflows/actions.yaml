@@ -21,20 +21,27 @@ jobs:
       - name: execute build
         run: python build.py
         
-      - name: PyInstaller Windows
+      - name: PyInstaller (Windows)
   # You may pin to the exact commit or the version.
   # uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
           path: .
-          spec: nf_windows.spec
-          
+          spec: nf.spec
+
+      - name: PyInstaller (Linux)
+  # You may pin to the exact commit or the version.
+  # uses: JackMcKew/pyinstaller-action-windows@a8dee21ad01bbc7e7363d445bb632691b95ba057
+        uses: JackMcKew/pyinstaller-action-windows@v0.1.2
+        with:
+          path: .
+          spec: nf.spec
 
       - name: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Github"
-          git add -f nf dist/windows/nf.exe
+          git add -f nf dist/windows/nf.exe dist/linux/nf.exe
           git diff-index --quiet HEAD || (git commit -a -m "Built nf `cat version`" --allow-empty)
 
       - name: push
