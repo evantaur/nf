@@ -27,7 +27,7 @@ jobs:
         uses: JackMcKew/pyinstaller-action-windows@v0.1.2
         with:
           path: .
-          spec: nf.spec
+          spec: nf_windows.spec
           
 
       - name: commit
