@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Github"
-          git add -f nf dist/windows/nf.exe dist/linux/nf
+          git add -f dist/nf dist/windows/nf.exe dist/linux/nf
           git diff-index --quiet HEAD || (git commit -a -m "Built nf `cat version`" --allow-empty)
       - name: push
         uses: ad-m/github-push-action@v0.6.0
