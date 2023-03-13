@@ -163,3 +163,5 @@ cython_debug/
 #Project spesific
 nf
 version
+dist/
+README.md

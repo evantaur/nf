@@ -1,0 +1,4 @@
+README.md merge=ours
+dist/nf merge=ours
+dist/windows/nf.exe merge=ours
+dist/linux/nf merge=ours
