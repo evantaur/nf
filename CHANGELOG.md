@@ -1,3 +1,6 @@
+#### 1.002
+- Bug fix on adding/removing templates because i forgot to change the path to user templates...
+
 #### 1.001
 - Added variables to use in templates.
 

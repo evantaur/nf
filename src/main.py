@@ -10,7 +10,7 @@ import re
 try:
     size = os.get_terminal_size()
 except OSError:
-    size = 60
+    size = False
 
 __VERSION__=""
 
@@ -489,12 +489,12 @@ if args.add:
         templatename = input("Enter name for template:\n")
         with open(filename,'r',encoding='utf-8') as file:
             text = file.readlines()
-            with open(f"{user_template_dir}/{templatename}",'w',encoding='utf-8') as f:
+            with open(f"{conf.userTemplatesPath}/{templatename}",'w',encoding='utf-8') as f:
                 f.writelines(text)
         sys.exit(0)
     sys.exit("File not found.")
 elif args.remove:
-    templatename = f"{user_template_dir}/{filename}"
+    templatename = f"{conf.userTemplatesPath}/{filename}"
     exists = Path(templatename).exists()
     if exists:
         os.remove(templatename)
