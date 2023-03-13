@@ -8,10 +8,12 @@ import os
 import sys
 import json
 import subprocess
+from pathlib import Path
 
 
 print("Starting build")
 templates = {}
+Path("dist").mkdir( 0o760, True, True )
 
 print("Listing templates")
 template_dir="./templates/"
