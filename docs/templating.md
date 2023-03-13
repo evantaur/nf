@@ -1,4 +1,5 @@
-﻿
+﻿<details>
+<summary>Templating</summary>
  Templating
  
 **nf** supports using variables in templates that allows you to create dynamic templates for your projects. It uses a simple syntax that can be easily extended with additional options.
@@ -66,3 +67,4 @@ some more examples here:
 <|email[desc=Enter your email|r]|>
 
 ```
+</details>

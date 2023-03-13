@@ -34,6 +34,3 @@ TBA
 
 </details>
 
-
-usage:
-
