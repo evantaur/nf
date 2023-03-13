@@ -26,7 +26,6 @@ class config:
         self.filename          = f"{self.path}/config.json"
         self.userTemplatesPath = f"{self.path}/templates"
         self.config            = {}
-        self.userTemplates     = tuple(os.listdir(self.userTemplatesPath))
         if Path(self.filename).exists():
             with open(self.filename,'r',encoding='utf-8') as cfg:
                 self.config = json.load(cfg)
@@ -34,6 +33,7 @@ class config:
             self.config = {}
         #Create user template directory if needed
         Path(self.userTemplatesPath).mkdir( 0o760, True, True )
+        self.userTemplates     = tuple(os.listdir(self.userTemplatesPath))
 
     def __call__(self,key=False,value=False):
         if key:
