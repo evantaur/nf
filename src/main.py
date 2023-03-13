@@ -32,8 +32,8 @@ class config:
         else:
             self.config = {}
         #Create user template directory if needed
-        self.userTemplates     = tuple(os.listdir(self.userTemplatesPath))
         Path(self.userTemplatesPath).mkdir( 0o760, True, True )
+        self.userTemplates     = tuple(os.listdir(self.userTemplatesPath))
 
     def __call__(self,key=False,value=False):
         if key:
