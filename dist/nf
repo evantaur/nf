@@ -54,6 +54,28 @@ conf = config()
 Automatically generated templates.
 '''
 templates = {
+  "json": [
+    "{}\n"
+  ],
+  "rs": [
+    "//\n",
+    "//\n",
+    "//\n",
+    "fn main() {\n",
+    "\n",
+    "}\n"
+  ],
+  "php": [
+    "<?php\n",
+    "\n",
+    "?>\n"
+  ],
+  "pl": [
+    "#!/usr/bin/perl\n"
+  ],
+  "sh": [
+    "#!/bin/bash\n"
+  ],
   "c": [
     "// \n",
     "//\n",
@@ -66,30 +88,8 @@ templates = {
     "\n",
     "}\n"
   ],
-  "php": [
-    "<?php\n",
-    "\n",
-    "?>\n"
-  ],
-  "pl": [
-    "#!/usr/bin/perl\n"
-  ],
   "py": [
     "#!/usr/bin/env python3\n"
-  ],
-  "sh": [
-    "#!/bin/bash\n"
-  ],
-  "json": [
-    "{}\n"
-  ],
-  "rs": [
-    "//\n",
-    "//\n",
-    "//\n",
-    "fn main() {\n",
-    "\n",
-    "}\n"
   ]
 }
 
