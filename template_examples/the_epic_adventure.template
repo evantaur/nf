@@ -1,0 +1,39 @@
+The epic adventure of <|name[desc=your name|require]|>.
+############################################
+You find yourself standing at the entrance of a dark cave. The entrance is guarded by a fierce-looking troll.
+
+"Who goes there?" the troll growls. "State your name and purpose!"
+
+You introduce yourself as <|name[desc=your name|require]|>, a brave adventurer in search of treasure.
+
+The troll eyes you suspiciously, but then nods its head. "Very well. You may enter, but be warned: this cave is filled with dangers at every turn."
+
+You step inside the cave and your eyes slowly adjust to the dim light. You can see several paths branching off in different directions.
+
+As you make your way deeper into the cave, you hear strange noises coming from all around you. The air is thick with the scent of must and decay. You feel a cold shiver run down your spine.
+
+As you continue on, you come across a point where the cave splits in two directions.
+
+You choose <|path[desc=which direction to go|select=( left,right)|default=1|require]|> path and continue on, determined to find the treasure hidden deep within the cave.
+
+Suddenly, you hear a voice coming from the darkness. "Who dares to enter my domain?" it booms. "Show yourself!"
+
+You draw your <|weapon[desc=weapon to use in battle|default=banana|require]|> and step forward, ready for a fight.
+
+The creature emerges from the shadows, revealing itself to be a <|monster[desc=monster type you fought|select=(goblin,orc,troll)|default=0|require]|>. You engage in a fierce battle, your <|weapon[desc=weapon you chose|default=banana|require]|> clashing against its razor-sharp claws.
+
+After defeating the creature, you find a hidden passage leading deeper into the cave. You follow it, hoping it will lead you to the treasure.
+
+As you walk, you notice <|markings[desc=give an adjective|default=strange|require]|> markings on the walls. They seem to be pointing in a certain direction.
+
+You follow the markings and eventually come to a large chamber. In the center of the chamber sits a <|treasure[desc=type of treasure you found|select={"pile of gold coins":"We're rich!","ancient artifact":"I wonder if it has magical properties?" ,"enchanted amulet": "+5 stamina","sack of potatoes":"Yummy!"}|default=3|require]|>. You smile triumphantly, knowing that your bravery has paid off.
+
+You grab the treasure and make your way back to the entrance of the cave. As you step out into the sunlight, you hear the troll's voice behind you.
+
+"Did you find what you were looking for?" it asks.
+
+You turn to face the troll and hold up your treasure. "Yes, I did," you say. "And I couldn't have done it without your warning."
+
+The troll nods, a small smile on its face. "I knew you were brave," it says. "Take care on your next adventure."
+
+You nod and walk away, eager to see where your next adventure will take you.

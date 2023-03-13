@@ -1,0 +1,8 @@
+# Seriously awesome phonebook
+Name           : <|phonebook_name[desc=What's your name?]|>
+Phone number   : <|phonebook_number[desc=Enter your phone number|default=555-555-5555]|>
+Street address : <|phonebook_address[desc=Enter your address|default=123 Main Street|r]|>
+ZIP code       : <|phonebook_zipcode[desc=Enter your zipcode|default=123456|r]|>
+Country        : <|phonebook_country[desc=Select country|select=(Australia,USA,UK,Mars,I don't know)|r]|>
+
+<|phonebook_name|> lives in <|phonebook_country|>

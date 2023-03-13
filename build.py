@@ -9,6 +9,7 @@ import sys
 import json
 import subprocess
 
+
 print("Starting build")
 templates = {}
 
@@ -45,7 +46,7 @@ with open('version','r',encoding='utf-8') as file:
 print("Building...")
 VersionIndex = data.index('__VERSION__=""\n')
 data[VersionIndex] = f"__VERSION__ = {version}\n"
-TemplateIndex = data.index('#!TEMPLATES\n')-2
+TemplateIndex = data.index('templates=[]\n')-2
 for i in range(4):
     data.pop(TemplateIndex)
 data[TemplateIndex] = f"'''\nAutomatically generated templates.\n'''\ntemplates = {json.dumps(templates,indent=2)}\n"
@@ -55,11 +56,13 @@ data[editorsIndex] = f"    editors = {json.dumps(editors,indent=8)}\n"
 
 
 def get_manual():
-    with open('docs/readme','r',encoding='utf-8') as file:
+    with open('docs/readme.md','r',encoding='utf-8') as file:
         readme = file.read()
+    with open('docs/templating.md','r',encoding='utf-8') as file:
+        templating = file.read()
     nf_help = subprocess.Popen(['python3', 'dist/nf',"--help"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     stdout,stderr = nf_help.communicate()
-    return f"{readme}<pre>\n{stdout.decode()}\n</pre>"
+    return f"{readme}\n{templating}\n\nusage:\n<pre>\n{stdout.decode()}\n</pre>\n"
 
 
 def write():
