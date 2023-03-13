@@ -9,6 +9,7 @@ import sys
 import json
 import subprocess
 
+
 print("Starting build")
 templates = {}
 
@@ -45,7 +46,7 @@ with open('version','r',encoding='utf-8') as file:
 print("Building...")
 VersionIndex = data.index('__VERSION__=""\n')
 data[VersionIndex] = f"__VERSION__ = {version}\n"
-TemplateIndex = data.index('#!TEMPLATES\n')-2
+TemplateIndex = data.index('templates=[]\n')-2
 for i in range(4):
     data.pop(TemplateIndex)
 data[TemplateIndex] = f"'''\nAutomatically generated templates.\n'''\ntemplates = {json.dumps(templates,indent=2)}\n"

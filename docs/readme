@@ -1,7 +1,6 @@
 # nf - New File
 
-Creates a new file with a template based on the file extension or template switch.
-
+The nf command is a simple but powerful tool that can be used to create new files with a template based on the file extension or template switch. It has several optional arguments that allow you to customize the file creation process, add or remove custom templates, and even open the file in your preferred editor.
 
 
 <details>
