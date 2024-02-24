@@ -54,8 +54,17 @@ conf = config()
 Automatically generated templates.
 '''
 templates = {
+  "pl": [
+    "#!/usr/bin/perl\n"
+  ],
+  "py": [
+    "#!/usr/bin/env python3\n"
+  ],
   "json": [
     "{}\n"
+  ],
+  "sh": [
+    "#!/bin/bash\n"
   ],
   "rs": [
     "//\n",
@@ -64,17 +73,6 @@ templates = {
     "fn main() {\n",
     "\n",
     "}\n"
-  ],
-  "php": [
-    "<?php\n",
-    "\n",
-    "?>\n"
-  ],
-  "pl": [
-    "#!/usr/bin/perl\n"
-  ],
-  "sh": [
-    "#!/bin/bash\n"
   ],
   "c": [
     "// \n",
@@ -88,8 +86,10 @@ templates = {
     "\n",
     "}\n"
   ],
-  "py": [
-    "#!/usr/bin/env python3\n"
+  "php": [
+    "<?php\n",
+    "\n",
+    "?>\n"
   ]
 }
 
@@ -293,6 +293,7 @@ def list_editors():
         "gedit",
         "gvim",
         "helix",
+        "hx",
         "jed",
         "kakoune",
         "kate",
@@ -508,7 +509,10 @@ def executeAfterDone(a):
     os.system(filename)
 
 if args.variables:
-    vs = conf().get("variables",{})
+    vs = conf().get("variables")
+    if not vs:
+        print("No variables set")
+        sys.exit(0)
     w = size.columns
     var_width= max([len(key) for key in vs])+2
     form = f"%-{var_width}s | %-30s"
