@@ -12,7 +12,7 @@ try:
 except OSError:
     size = False
 
-__VERSION__ = 1.002
+__VERSION__ = 1.003
 
 
 
