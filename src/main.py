@@ -441,7 +441,10 @@ def executeAfterDone(a):
     os.system(filename)
 
 if args.variables:
-    vs = conf().get("variables",{})
+    vs = conf().get("variables")
+    if not vs:
+        print("No variables set")
+        sys.exit(0)
     w = size.columns
     var_width= max([len(key) for key in vs])+2
     form = f"%-{var_width}s | %-30s"
