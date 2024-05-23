@@ -57,22 +57,8 @@ templates = {
   "pl": [
     "#!/usr/bin/perl\n"
   ],
-  "py": [
-    "#!/usr/bin/env python3\n"
-  ],
-  "json": [
-    "{}\n"
-  ],
   "sh": [
-    "#!/bin/bash\n"
-  ],
-  "rs": [
-    "//\n",
-    "//\n",
-    "//\n",
-    "fn main() {\n",
-    "\n",
-    "}\n"
+    "#!/bin/sh\n"
   ],
   "c": [
     "// \n",
@@ -83,6 +69,20 @@ templates = {
     "  \n",
     "int main()\n",
     "{\n",
+    "\n",
+    "}\n"
+  ],
+  "json": [
+    "{}\n"
+  ],
+  "py": [
+    "#!/usr/bin/env python3\n"
+  ],
+  "rs": [
+    "//\n",
+    "//\n",
+    "//\n",
+    "fn main() {\n",
     "\n",
     "}\n"
   ],
